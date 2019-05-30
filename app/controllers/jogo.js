@@ -19,3 +19,12 @@ module.exports.iniciar = function(application, req, res) {
 	res.render('novoJogo');	
 
 }
+
+module.exports.novoLancamento = function(application, req, res) {
+	console.log('controller: novoLancamento');
+	if (jogoMode1){
+		console.log('controller: pede para o model fazer novoLancamento');
+		var resultado = jogoMode1.lancarDados();
+		res.render('novoLancamento', {lancamento : resultado} );
+	}
+}

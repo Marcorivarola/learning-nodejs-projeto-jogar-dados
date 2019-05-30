@@ -13,7 +13,9 @@ application.get('/iniciar', function(req,res){
 
 application.get('/lancarDados', function(req,res){
 	console.log('routes: /lancarDados');
-	res.send('Esta funcionalidade não foi implementada ainda!');
+
+	application.app.controllers.jogo.novoLancamento(application,req,res);
+	//res.send('Esta funcionalidade não foi implementada ainda!');
 });
 
 application.get('/reiniciar', function(req,res){

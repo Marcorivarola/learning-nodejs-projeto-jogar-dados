@@ -41,10 +41,39 @@ Jogo.prototype.contarDados = function(lancamento){
 	return contagem;
 }
 
+const GENERALA = { jogo : 'Generela', pontos : 100 }
+const POKER    = { jogo : 'Poker'   , pontos : 50  }
+const FULL     = { jogo : 'Full'    , pontos : 30  }
+const NADA     = { jogo : 'Nenhum'  , pontos : 0 }
+
+Jogo.prototype.analisarLancamento = function(lancamento){
+
+	var contagem = this.contarDados(lancamento);
+
+	var resultado;
+
+	if ( contagem.find(e => e === 5) )
+		resultado = GENERALA;
+
+	else if ( contagem.find(e => e === 4) )
+		resultado = POKER;
+
+	else if ( contagem.find(e => e === 3) && contagem.find(e => e === 2) )
+		resultado = FULL;
+	else 
+		resultado = NADA;
+
+	return resultado;
+
+}
+
 jogo = new Jogo();
 lancamento = jogo.lancarDados();
 contagem = jogo.contarDados(lancamento);
+resultado = jogo.analisarLancamento(lancamento);
+
 console.log('Dados sorteados: ', lancamento);
 console.log('contagem: ', contagem);
+console.log('analise do lancamento: ', resultado);
 
 module.exports.Jogo = Jogo;
