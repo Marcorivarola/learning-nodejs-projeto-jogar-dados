@@ -13,8 +13,12 @@ Jogo.prototype.novoJogo = function() {
 };
 
 Jogo.prototype.lancarUmDado = function() {
-	var valorAleatorio = Math.random(); // No intervalo [0,1]
-	var lado = 1 + parseInt(valorAleatorio * (this.lados));
+	var valorAleatorio = Math.random();
+	// No intervalo [0,1]
+	//De [0,1] * 6 => [0,6]
+	//Usando math.floor temos [0,1,2,3,4,5]
+	//Somando uma unidade temos [1,2,3,4,5,6]
+	var lado = 1 + Math.floor(valorAleatorio * (this.lados));
 	return lado;
 };
 
@@ -28,16 +32,19 @@ Jogo.prototype.lancarDados = function() {
 };
 
 Jogo.prototype.contarDados = function(lancamento){
-	var contagem = Array(this.lados+1).fill(0);
+	var contagem = Array(this.lados).fill(0);
 	for (var i = 0; i < lancamento.length; i++){
 		var numero = lancamento[i];
-		contagem[numero-1] +- 1;
+		contagem[numero-1] += 1;
 
 	}
 	return contagem;
 }
 
 jogo = new Jogo();
-console.log('Dados sorteados: ', jogo.lancarDados());
+lancamento = jogo.lancarDados();
+contagem = jogo.contarDados(lancamento);
+console.log('Dados sorteados: ', lancamento);
+console.log('contagem: ', contagem);
 
 module.exports.Jogo = Jogo;
