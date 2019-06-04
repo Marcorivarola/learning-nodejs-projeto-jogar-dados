@@ -8,13 +8,13 @@ Resonsável por:
 - Pedir ao model para iniciar u7m novo jogo
 */
 
-var model = require('../models/jogo');
+//var model = require('../models/jogo');
 var jogoMode1 = undefined;
 
 module.exports.iniciar = function(application, req, res) {
 	console.log('controller: iniciar');
 	console.log('controller: cria intância de jogo');
-	jogoMode1 = new model.Jogo();
+	jogoMode1 = new application.app.models.jogo.Jogo();
 	console.log('controller: atualiza view - novoJogo');
 	res.render('novoJogo');	
 
@@ -24,7 +24,7 @@ module.exports.novoLancamento = function(application, req, res) {
 	console.log('controller: novoLancamento');
 	if (jogoMode1){
 		console.log('controller: pede para o model fazer novoLancamento');
-		var resultado = jogoMode1.lancarDados();
-		res.render('novoLancamento', {lancamento : resultado} );
+		var resultado = jogoMode1.novoLancamento();
+		res.render('novoLancamento', resultado );
 	}
 }

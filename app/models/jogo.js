@@ -67,6 +67,27 @@ Jogo.prototype.analisarLancamento = function(lancamento){
 
 }
 
+Jogo.prototype.novoLancamento = function(){
+	console.log('model: novoLancamento');
+	var lancamento = this.lancarDados();
+	console.log('model: analisarLancamento');
+	var analisarLancamento = this.analisarLancamento(lancamento);
+	this.pontos += analisarLancamento.pontos;
+	this.n += 1;
+	console.log('model: prepara resultado');
+
+	var resultado = {
+		pontosAcumulados : this.pontos,
+		nLancamentos : this.n,
+		lancamento : lancamento,
+		jogoLancamento : analisarLancamento.jogo,
+		pontosLancamento : analisarLancamento.pontos
+	};
+
+	return resultado;
+
+}
+
 jogo = new Jogo();
 lancamento = jogo.lancarDados();
 contagem = jogo.contarDados(lancamento);
