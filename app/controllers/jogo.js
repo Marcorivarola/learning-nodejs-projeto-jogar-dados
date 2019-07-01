@@ -48,3 +48,5 @@ module.exports.novoLancamento = function(application, req, res) {
 		jogoMode1 = undefined;
 		res.render('home');
 	}
+
+	

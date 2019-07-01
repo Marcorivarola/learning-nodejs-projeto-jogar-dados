@@ -74,6 +74,9 @@ Jogo.prototype.novoLancamento = function(){
 	var analisarLancamento = this.analisarLancamento(lancamento);
 	this.pontos += analisarLancamento.pontos;
 	this.n += 1;
+
+	var messenger = this.messenger(analisarLancamento);
+
 	console.log('model: prepara resultado');
 
 	var resultado = {
@@ -81,7 +84,31 @@ Jogo.prototype.novoLancamento = function(){
 		nLancamentos : this.n,
 		lancamento : lancamento,
 		jogoLancamento : analisarLancamento.jogo,
-		pontosLancamento : analisarLancamento.pontos
+		pontosLancamento : analisarLancamento.pontos,
+		sorte0 : messenger.sorte0,
+		mensagem : messenger.mensagem
+	};
+
+	return resultado;
+
+}
+
+Jogo.prototype.messenger = function(analisarLancamento) {
+	console.log('model: messenger');
+	console.log('model: analisarLancamento');
+	if (analisarLancamento.pontos == 0)
+		this.sorte0 += 1;
+	else 
+		this.sorte0 = 0;
+	mensagem = "";
+
+	if (this.sorte0 > 0 && this.sorte0 == 5)
+		mensagem = "Talvez so tenha tido um pouco de azar, tente mais vezes. :)";
+
+
+	var resultado = {
+		sorte0 : this.sorte0,
+		mensagem : mensagem
 	};
 
 	return resultado;

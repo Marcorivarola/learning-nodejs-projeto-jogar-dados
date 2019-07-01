@@ -1,8 +1,15 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
+
 	<title>Projeto Jogar Dados</title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
 </head>
+
 <body>
 
 	<main>
@@ -25,25 +32,62 @@
 					</div>
 
 				</div>
+				<div class="col-6 p-2">
+
+					<div class="card">
+
+						<div class="card-header">Número de Lançamentos</div>
+						<div class="card-body"><%= nLancamentos %></div>
+					</div>
+				</div>
+
+				<div class="col-12 p-2">
+
+					<div class="card">
+
+						<div class="card-header">Lançamento</div>
+
+						<div class="card-body">
+
+							<% for (var i=0; i < lancamento.length; i++) { %>
+								<img src="images/dado<%= lancamento[i]%>.png"
+								class="p-2 col-3 col-sm-2">
+							<% } %>
+							<%= lancamento %>
+								
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 p-2">
+					<div class="card">
+						<div class="card-header">Jogo Lançamento</div>
+						<div class="card-body"><%= jogoLancamento %></div>
+					</div>
+				</div>
+
+				<div class="col-6 p-2">
+					<div class="card">
+						<div class="card-header">Pontuação de Lançamentos</div>
+						<div class="card-body"><%= pontosLancamento %></div>
+
+						<script type="text/javascript">
+							if ('<%= mensagem %>' !== '')
+								alert ('<%= mensagem %>');
+						</script>
+
+					</div>
+				</div>
+				
 			</div>
 
 		</div>
 
-		<p>Pontuação acumulada: <%= pontosAcumulados %></p>
-
-		<p>Número de Lançamentos: <%= nLancamentos %></p>
-
-		<p>Lançamento: <%= lancamento %></p>
-
-		<p>Jogo Lançamento: <%= jogoLancamento %></p>
-
-		<p>Pontuação Lançamento: <%= pontosLancamento %></p>
-
 		<button class="btn btn-success" type="button" id="buttonLancarDados">Lançar Dados</button>
 
-		<button class="btn btn-success" type="button" id="buttonReiniciarJogo">Reiniciar</button>
+		<button class="btn btn-warning" type="button" id="buttonReiniciarJogo">Reiniciar</button>
 
-		<button class="btn btn-success" type="button" id="buttonEncerrarJogo">Encerrar</button>
+		<button class="btn btn-danger" type="button" id="buttonEncerrarJogo">Encerrar</button>
 
 		</div>
 
