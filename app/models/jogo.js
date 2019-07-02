@@ -4,6 +4,7 @@ function Jogo(dados = 5, lados = 6) {
 	this.lados = lados;
 	this.pontos = 0;
 	this.n = 0;
+	this.sorte0 = 0;
 }
 
 Jogo.prototype.novoJogo = function() {
@@ -102,8 +103,14 @@ Jogo.prototype.messenger = function(analisarLancamento) {
 		this.sorte0 = 0;
 	mensagem = "";
 
-	if (this.sorte0 > 0 && this.sorte0 == 5)
+	if (this.sorte0 >= 5){
 		mensagem = "Talvez so tenha tido um pouco de azar, tente mais vezes. :)";
+		this.sorte0 = 0;
+	}
+	
+	if (analisarLancamento.pontos != 0){
+		mensagem = "Você está com sorte, Parabéns. ;)";
+	}	
 
 
 	var resultado = {
