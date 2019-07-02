@@ -87,7 +87,9 @@ Jogo.prototype.novoLancamento = function(){
 		jogoLancamento : analisarLancamento.jogo,
 		pontosLancamento : analisarLancamento.pontos,
 		sorte0 : messenger.sorte0,
-		mensagem : messenger.mensagem
+		mensagem : messenger.mensagem,
+		mensagemStatus : messenger.mensagemStatus
+
 	};
 
 	return resultado;
@@ -105,17 +107,20 @@ Jogo.prototype.messenger = function(analisarLancamento) {
 
 	if (this.sorte0 >= 5){
 		mensagem = "Talvez so tenha tido um pouco de azar, tente mais vezes. :)";
+		mensagemStatus = 'azar';
 		this.sorte0 = 0;
 	}
-	
+
 	if (analisarLancamento.pontos != 0){
 		mensagem = "Você está com sorte, Parabéns. ;)";
+		mensagemStatus = 'sorte';
 	}	
 
 
 	var resultado = {
-		sorte0 : this.sorte0,
-		mensagem : mensagem
+		sorte0 : this.sorte0,		
+		mensagem : mensagem,
+		mensagemStatus : mensagemStatus
 	};
 
 	return resultado;
